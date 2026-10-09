@@ -8,6 +8,11 @@ export const { dynamic, dynamicParams, revalidate, generateStaticParams, GET } =
   additionalPrecacheEntries: [
     "/",
     "/~offline",
+    "/find",
+    "/for-you",
+    "/coach",
+    "/plan",
+    "/me",
     "/grades",
     "/grades/gpa",
     "/grades/final",

@@ -225,7 +225,7 @@ export function toolForPath(pathname: string): Tool | undefined {
 }
 
 /** Default phone bottom bar, used until the student picks their own. */
-export const defaultBottomBar: TabId[] = ["homework", "focus", "grades", "settings"];
+export const defaultBottomBar: TabId[] = ["find", "coach", "plan", "homework", "grades"];
 export const BOTTOM_BAR_MAX = 5;
 
 /** Lowercase, accent-free text for forgiving search ("calificacion" finds "calificación"). */

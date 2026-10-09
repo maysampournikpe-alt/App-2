@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { useSyncExternalStore } from "react";
-import { Plus, Timer } from "lucide-react";
+import { Plus, Search, Timer } from "lucide-react";
 import { useMessages } from "@/i18n/client";
 import { useCollection } from "@/lib/local-store";
 import { daysBetween, todayISO } from "@/lib/dates";
 import { builtTabs } from "@/lib/features";
 import { useSettings } from "@/lib/settings";
+import { useProfile } from "@/lib/use-profile";
 import { FOCUS_SESSIONS } from "@/lib/pomodoro";
 import { minutesOn, type FocusSession } from "@/lib/tools/focus-stats";
 import type { Assignment } from "@/lib/tools/homework";
@@ -21,6 +22,7 @@ const subscribeNever = () => () => {};
 export function HomePage() {
   const m = useMessages();
   const { lowData } = useSettings();
+  const { profile, loaded: profileLoaded } = useProfile();
   useDocumentTitle("");
   const hour = useSyncExternalStore(subscribeNever, () => new Date().getHours(), () => -1);
   const greeting =
@@ -48,6 +50,38 @@ export function HomePage() {
         {greeting || " "}
       </h1>
       <p className="mt-3 text-lg text-ink-soft">{m.home.lead}</p>
+
+      {builtTabs.some((t) => t.id === "find") && (
+        <form action="/find" method="get" className="panel mt-6">
+          <label htmlFor="home-find" className="text-xl font-bold">
+            {m.finder.greeting}
+          </label>
+          <div className="mt-2 flex flex-wrap gap-2">
+            <input
+              id="home-find"
+              name="q"
+              minLength={2}
+              maxLength={300}
+              required
+              className="field min-w-48 flex-1"
+              placeholder={m.finder.examples[0]}
+              autoComplete="off"
+            />
+            <button type="submit" className="btn-primary">
+              <Search className="size-5" aria-hidden="true" />
+              {m.finder.search}
+            </button>
+          </div>
+          {profileLoaded && !profile.onboarded && (
+            <p className="help mt-3">
+              <Link href="/me" className="font-bold text-river underline">
+                {m.me.startSetup}
+              </Link>
+              . {m.me.intro}
+            </p>
+          )}
+        </form>
+      )}
 
       <div className="mt-8 grid gap-4 md:grid-cols-5">
         <section aria-labelledby="due-soon" className="panel md:col-span-3">
