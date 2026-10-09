@@ -1,0 +1,9 @@
+# Cloudflare static-asset headers (the Next.js headers() in next.config.ts only cover Worker responses).
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(self), geolocation=(self)
+
+/serwist/sw.js
+  Service-Worker-Allowed: /
+  Cache-Control: no-cache

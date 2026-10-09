@@ -63,3 +63,22 @@ The service worker is turned off in `npm run dev`; use `npm run build && npm sta
 - `src/lib/sync.ts`: account sync. `supabase/migrations/`: tables and access rules.
 - `src/lib/tools/`: the math behind each tool, with tests.
 - `src/components/tools/`: one component per tool.
+
+## Deploy on Cloudflare Workers
+
+Uses the OpenNext Cloudflare adapter (`wrangler.jsonc`, `open-next.config.ts`).
+
+```bash
+npx wrangler login
+# Public values are baked in at build time, so have them in .env.local (or build variables) first:
+#   NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+npx wrangler secret put GROQ_API_KEY      # server secret, asks for the value
+npm run cf:preview                        # test locally in the Workers runtime
+npm run cf:deploy                         # build and publish; prints your *.workers.dev URL
+```
+
+Then add `https://<your-worker>.workers.dev/auth/callback` to Supabase (Authentication → URL
+Configuration) and to the Google OAuth client. Notes: `scripts/cf-copy-sw.mjs` copies the service worker
+into the static assets; `patches/` fixes the adapter for Next 16.4 (applied on `npm install`);
+`stubs/esbuild-wasm` keeps a build-only tool out of the Worker (it stays under the 3 MiB free-plan limit).
+Rate limits and the search cache are per Worker instance until they move to Supabase.
