@@ -477,6 +477,11 @@ const es: Messages = {
       signOutEverywhere: "Cerrar sesión en todos lados",
       under13Locked: "Las cuentas no están disponibles para menores de 13 años. Todo lo que haces se queda en este dispositivo.",
       error: "Eso no funcionó. Inténtalo de nuevo.",
+      deleteAccount: "Eliminar mi cuenta",
+      deleteHelp: "Esto elimina tu cuenta y todo lo sincronizado con ella. Los datos de este dispositivo también se borran. No se puede deshacer.",
+      deleteWord: "ELIMINAR",
+      deleteConfirm: (word: string) => `Escribe ${word} para eliminar tu cuenta para siempre.`,
+      deleted: "Tu cuenta fue eliminada.",
     },
     data: {
       heading: "Tus datos",

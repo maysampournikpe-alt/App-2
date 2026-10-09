@@ -3,6 +3,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { useMessages } from "@/i18n/client";
+import { clearAllLocalData } from "@/lib/local-store";
 import { authConfigured, getSupabase } from "@/lib/supabase/client";
 import { Section } from "@/components/ui";
 
@@ -47,6 +48,23 @@ export function AccountSection({ locked }: { locked: boolean }) {
     await getSupabase()?.auth.signOut({ scope });
   }
 
+  async function deleteAccount() {
+    const supabase = getSupabase();
+    if (!supabase || !session) return;
+    if (window.prompt(a.deleteConfirm(a.deleteWord))?.trim().toUpperCase() !== a.deleteWord) return;
+    setBusy(true);
+    try {
+      const res = await fetch("/api/account/delete", { method: "POST", headers: { Authorization: `Bearer ${session.access_token}` } });
+      if (!res.ok) throw new Error("failed");
+      await supabase.auth.signOut({ scope: "local" });
+      await clearAllLocalData();
+      setMessage({ text: a.deleted, bad: false });
+    } catch {
+      setMessage({ text: a.error, bad: true });
+    }
+    setBusy(false);
+  }
+
   return (
     <Section title={a.heading}>
       <div className="panel space-y-4">
@@ -60,7 +78,11 @@ export function AccountSection({ locked }: { locked: boolean }) {
               <button type="button" className="btn-secondary" onClick={() => signOut("global")}>
                 {a.signOutEverywhere}
               </button>
+              <button type="button" className="btn-secondary border-danger text-danger" onClick={deleteAccount} disabled={busy}>
+                {a.deleteAccount}
+              </button>
             </div>
+            <p className="help">{a.deleteHelp}</p>
           </>
         ) : !authConfigured ? (
           <p>{a.notReady}</p>

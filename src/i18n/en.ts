@@ -473,6 +473,11 @@ const en = {
       signOutEverywhere: "Sign out everywhere",
       under13Locked: "Accounts aren't available for students under 13. Everything you do stays on this device.",
       error: "That didn't work. Try again.",
+      deleteAccount: "Delete my account",
+      deleteHelp: "This removes your account and everything synced to it. Data on this device is deleted too. You can't undo it.",
+      deleteWord: "DELETE",
+      deleteConfirm: (word: string) => `Type ${word} to delete your account for good.`,
+      deleted: "Your account was deleted.",
     },
     data: {
       heading: "Your data",
