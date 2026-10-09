@@ -113,3 +113,14 @@ export function useLocalValue<T>(tool: string, key: string, fallback: T) {
 
   return { value, save, loaded };
 }
+
+/** Everything stored on this device, for "Download my data". Deleted rows are left out. */
+export async function exportAllData(): Promise<Record<string, unknown[]>> {
+  const rows = await getDb().items.toArray();
+  const out: Record<string, unknown[]> = {};
+  for (const r of rows) {
+    if (r.deleted) continue;
+    (out[r.tool] ??= []).push({ id: r.id, updatedAt: r.updatedAt, data: r.data });
+  }
+  return out;
+}

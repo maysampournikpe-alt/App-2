@@ -6,6 +6,7 @@ import { useEffect, useRef, useSyncExternalStore, type ReactNode } from "react";
 import { Menu, PanelLeftClose, PanelLeftOpen, Ellipsis, WifiOff, X } from "lucide-react";
 import { useMessages } from "@/i18n/client";
 import { localeList } from "@/i18n";
+import { GuestBanner } from "./guest-banner";
 import { builtTabs, tabForPath, BOTTOM_BAR_MAX } from "@/lib/features";
 import { updateSettings, useSettings } from "@/lib/settings";
 import { LogoMark } from "./logo";
@@ -160,6 +161,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                 <LanguageToggle />
               </div>
             </div>
+            <GuestBanner />
             {!online && (
               <p role="status" className="flex items-center justify-center gap-2 bg-sun-soft px-4 py-2 text-center text-sm font-bold text-ink">
                 <WifiOff className="size-4 shrink-0" aria-hidden="true" />

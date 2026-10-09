@@ -88,6 +88,8 @@ export type FindRequest = {
   category: Category | "any";
   language: "en" | "es";
   ageGroup: AgeGroup;
+  /** Profile interests, used only to word "why this fits you". */
+  interests?: string[];
   location: { label: string; lat: number; lng: number } | null;
 };
 
@@ -96,6 +98,7 @@ export const findRequestSchema = z.object({
   category: z.enum([...categories, "any"]).catch("any"),
   language: z.enum(["en", "es"]).catch("en"),
   ageGroup: z.enum(ageGroups).catch("teen"),
+  interests: z.array(z.string().trim().max(40)).max(10).catch([]).optional(),
   location: z
     .object({
       label: z.string().trim().min(1).max(80),

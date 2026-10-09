@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import { useLocale, useMessages } from "@/i18n/client";
 import { stripMeta, useCollection, useLocalValue, type WithId } from "@/lib/local-store";
+import { ageGroupFor } from "@/lib/profile";
+import { useProfile } from "@/lib/use-profile";
 import { lookupPlace, nearestPlace } from "@/lib/finder/geo";
 import {
   categories,
@@ -61,6 +63,7 @@ export function OpportunityFinder() {
   const [locating, setLocating] = useState(false);
   const [filters, setFilters] = useState<Filters>({ freeOnly: false, onlineOnly: false, nearOnly: false, confirmedOnly: false });
   const [state, setState] = useState<State>({ kind: "idle" });
+  const { profile } = useProfile();
   const saved = useCollection<Opportunity>(SAVED);
   const stored = useLocalValue<{ place: Place | null }>(FINDER, "settings", { place: null });
   const [hydrated, setHydrated] = useState(false);
@@ -124,7 +127,7 @@ export function OpportunityFinder() {
       return;
     }
     setState({ kind: "loading" });
-    const body: FindRequest = { query: q, category, language: locale, ageGroup: "teen", location: place };
+    const body: FindRequest = { query: q, category, language: locale, ageGroup: ageGroupFor(profile.birthMonth, profile.birthYear), interests: profile.interests.slice(0, 10), location: place };
     try {
       const res = await fetch("/api/find", {
         method: "POST",

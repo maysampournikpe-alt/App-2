@@ -160,7 +160,15 @@ export const allTabs: Tab[] = [
   { id: "wellbeing", group: "grow", href: "/wellbeing", icon: HeartPulse, built: false, tools: [], keywords: [] },
   { id: "people", group: "grow", href: "/people", icon: Users, built: false, tools: [], keywords: [] },
 
-  { id: "profile", group: "me", href: "/me", icon: UserRound, built: false, tools: [], keywords: [] },
+  {
+    id: "profile",
+    group: "me",
+    href: "/me",
+    icon: UserRound,
+    built: true,
+    tools: [],
+    keywords: ["profile", "perfil", "account", "cuenta", "sign in", "iniciar sesión", "interests", "intereses"],
+  },
   {
     id: "settings",
     group: "me",

@@ -83,7 +83,7 @@ function cardsPrompt(req: FindRequest, text: string, sources: Source[]): string 
     .map((s, i) => `[${i + 1}] ${s.url}\n${s.title}\n${s.content.slice(0, 900)}`)
     .join("\n\n");
   return [
-    `Student request: "${req.query}". Place: ${req.location?.label ?? "Texas"}. Write every text value in ${languageName(req.language)}.`,
+    `Student request: "${req.query}". Place: ${req.location?.label ?? "Texas"}.${req.interests?.length ? ` Student interests: ${req.interests.join(", ")}.` : ""} Write every text value in ${languageName(req.language)}.`,
     ageRules(req.ageGroup),
     "",
     "Using ONLY the research notes and pages below, return JSON: {\"cards\": [...]} with up to 8 cards, best fit first.",
