@@ -48,8 +48,6 @@ export type Profile = {
   /** Free text and ids from `interestIds`. */
   interests: string[];
   onboarded: boolean;
-  /** Under 13 stays in guest mode until a parent approves. */
-  consent: "notNeeded" | "pending" | "approved";
 };
 
 export const emptyProfile: Profile = {
@@ -59,7 +57,6 @@ export const emptyProfile: Profile = {
   grade: null,
   interests: [],
   onboarded: false,
-  consent: "notNeeded",
 };
 
 /**
@@ -91,7 +88,8 @@ export function suggestGrade(month: number, year: number, now = new Date()): num
   return Math.min(12, Math.max(0, schoolYearStart - turnsFiveBeforeSep));
 }
 
-export function needsConsent(month: number | null, year: number | null, now = new Date()): boolean {
+/** Students under 13 never get an account: they use Rumbo as a guest on their own device. */
+export function isUnder13(month: number | null, year: number | null, now = new Date()): boolean {
   return ageGroupFor(month, year, now) === "under13";
 }
 
@@ -126,6 +124,5 @@ export function parseProfile(value: unknown): Profile {
       ? [...new Set(v.interests.filter((x): x is string => typeof x === "string" && x.trim() !== "").map((x) => x.trim().slice(0, 40)))].slice(0, INTERESTS_MAX)
       : [],
     onboarded: v.onboarded === true,
-    consent: v.consent === "pending" || v.consent === "approved" ? v.consent : "notNeeded",
   };
 }

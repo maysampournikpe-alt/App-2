@@ -424,9 +424,9 @@ const en = {
         figure: "Figuring out puzzles and how things work",
         lead: "Leading, speaking, or starting something",
       },
-      under13Title: "A parent needs to say OK",
+      under13Title: "You'll use Rumbo as a guest",
       under13Body:
-        "Because you're under 13, you'll use Rumbo as a guest for now. Your things stay on this device. A parent or guardian can approve an account later. We don't collect any school email.",
+        "Because you're under 13, you'll use Rumbo as a guest. Everything stays on this device, and we don't ask for an email address or any school information.",
     },
     interests: {
       coding: "Coding",
@@ -471,7 +471,7 @@ const en = {
       signedInAs: (email: string) => `Signed in as ${email}`,
       signOut: "Sign out",
       signOutEverywhere: "Sign out everywhere",
-      under13Locked: "Accounts need a parent's OK for students under 13.",
+      under13Locked: "Accounts aren't available for students under 13. Everything you do stays on this device.",
       error: "That didn't work. Try again.",
     },
     data: {

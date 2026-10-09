@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Download, Pencil } from "lucide-react";
 import { useMessages } from "@/i18n/client";
 import { exportAllData } from "@/lib/local-store";
-import { INTERESTS_MIN, needsConsent, type Profile } from "@/lib/profile";
+import { INTERESTS_MIN, isUnder13, type Profile } from "@/lib/profile";
 import { useProfile } from "@/lib/use-profile";
 import { useSettings } from "@/lib/settings";
 import { PageHeader, Section, Status } from "@/components/ui";
@@ -23,7 +23,7 @@ export function MePage() {
   if (!profile.onboarded) return <Onboarding initial={profile} onDone={(p) => void save(p)} />;
 
   const labels = m.me.interests as Record<string, string>;
-  const locked = needsConsent(profile.birthMonth, profile.birthYear);
+  const locked = isUnder13(profile.birthMonth, profile.birthYear);
 
   async function download() {
     const blob = new Blob([JSON.stringify({ exportedAt: new Date().toISOString(), profile, settings, tools: await exportAllData() }, null, 2)], {

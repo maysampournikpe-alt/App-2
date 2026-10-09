@@ -10,7 +10,7 @@ import {
   addCustomInterest,
   interestIds,
   interestsFromQuiz,
-  needsConsent,
+  isUnder13,
   suggestGrade,
   toggleInterest,
   validBirth,
@@ -140,7 +140,7 @@ export function Onboarding({ initial, onDone }: { initial: Profile; onDone: (p: 
   };
 
   const finish = () =>
-    onDone({ ...p, onboarded: true, consent: needsConsent(p.birthMonth, p.birthYear) ? "pending" : "notNeeded" });
+    onDone({ ...p, onboarded: true });
 
   const canFinish = p.interests.length >= INTERESTS_MIN;
 
@@ -240,7 +240,7 @@ export function Onboarding({ initial, onDone }: { initial: Profile; onDone: (p: 
               <p className="help">{o.interestsHelp(INTERESTS_MIN, INTERESTS_MAX)}</p>
             </div>
             <InterestPicker value={p.interests} onChange={(interests) => setP({ ...p, interests })} />
-            {needsConsent(p.birthMonth, p.birthYear) && (
+            {isUnder13(p.birthMonth, p.birthYear) && (
               <div role="note" className="rounded-xl bg-river-soft p-3">
                 <p className="font-bold text-river">{o.under13Title}</p>
                 <p>{o.under13Body}</p>

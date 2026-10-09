@@ -428,9 +428,9 @@ const es: Messages = {
         figure: "Resolver acertijos y entender cómo funcionan las cosas",
         lead: "Liderar, hablar en público o empezar algo",
       },
-      under13Title: "Un padre necesita dar su permiso",
+      under13Title: "Usarás Rumbo como invitado",
       under13Body:
-        "Como tienes menos de 13 años, por ahora usarás Rumbo como invitado. Tus cosas se quedan en este dispositivo. Un padre o tutor puede aprobar una cuenta más adelante. No pedimos ningún correo de la escuela.",
+        "Como tienes menos de 13 años, usarás Rumbo como invitado. Todo se queda en este dispositivo y no pedimos correo electrónico ni información de la escuela.",
     },
     interests: {
       coding: "Programación",
@@ -475,7 +475,7 @@ const es: Messages = {
       signedInAs: (email: string) => `Sesión iniciada como ${email}`,
       signOut: "Cerrar sesión",
       signOutEverywhere: "Cerrar sesión en todos lados",
-      under13Locked: "Las cuentas necesitan el permiso de un padre para menores de 13 años.",
+      under13Locked: "Las cuentas no están disponibles para menores de 13 años. Todo lo que haces se queda en este dispositivo.",
       error: "Eso no funcionó. Inténtalo de nuevo.",
     },
     data: {

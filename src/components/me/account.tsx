@@ -6,7 +6,7 @@ import { useMessages } from "@/i18n/client";
 import { authConfigured, getSupabase } from "@/lib/supabase/client";
 import { Section } from "@/components/ui";
 
-/** Sign-in. Under-13 students stay guests until a parent approves (see the consent step). */
+/** Sign-in. Students under 13 are guests only: no account, no email. */
 export function AccountSection({ locked }: { locked: boolean }) {
   const a = useMessages().me.account;
   const [session, setSession] = useState<Session | null>(null);

@@ -4,7 +4,7 @@ import {
   ageFrom,
   ageGroupFor,
   interestsFromQuiz,
-  needsConsent,
+  isUnder13,
   parseProfile,
   suggestGrade,
   toggleInterest,
@@ -24,8 +24,8 @@ describe("age", () => {
     expect(ageGroupFor(3, 2010, oct2026)).toBe("teen");
     expect(ageGroupFor(1, 2007, oct2026)).toBe("adult");
     expect(ageGroupFor(null, null)).toBe("teen");
-    expect(needsConsent(10, 2013, oct2026)).toBe(true);
-    expect(needsConsent(3, 2010, oct2026)).toBe(false);
+    expect(isUnder13(10, 2013, oct2026)).toBe(true);
+    expect(isUnder13(3, 2010, oct2026)).toBe(false);
   });
   it("rejects impossible birth dates", () => {
     expect(validBirth(13, 2010, oct2026)).toBe(false);
@@ -59,12 +59,11 @@ describe("interests", () => {
 
 describe("parseProfile", () => {
   it("repairs bad data", () => {
-    const p = parseProfile({ nickname: 5, birthMonth: 99, grade: 9, interests: ["art", "art", 3, ""], consent: "x" });
+    const p = parseProfile({ nickname: 5, birthMonth: 99, grade: 9, interests: ["art", "art", 3, ""] });
     expect(p.nickname).toBe("");
     expect(p.birthMonth).toBeNull();
     expect(p.grade).toBe(9);
     expect(p.interests).toEqual(["art"]);
-    expect(p.consent).toBe("notNeeded");
     expect(parseProfile(null).onboarded).toBe(false);
   });
 });
