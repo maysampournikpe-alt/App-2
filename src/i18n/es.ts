@@ -643,6 +643,7 @@ const es: Messages = {
       course: "Cursos",
       other: "Otro",
     },
+    resultsHeading: "Resultados",
     filtersHeading: "Filtros",
     freeOnly: "Solo gratis",
     onlineOnly: "Solo en línea",
@@ -735,44 +736,51 @@ const es: Messages = {
   },
 
   privacy: {
-    title: "Privacidad, en palabras simples",
+    title: "Privacidad, en palabras sencillas",
     updated: "Última actualización: octubre de 2026",
     sections: [
       {
         heading: "Lo más importante",
         body: [
-          "Rumbo es gratis. No tiene anuncios y nunca vendemos tus datos.",
-          "Solo pedimos lo que la aplicación necesita para funcionar. Nunca necesitamos tu nombre completo ni tu dirección.",
-          "Tus herramientas (GPA, tareas, temporizador, planes) se guardan en tu propio dispositivo. Nadie más puede verlas.",
+          "Rumbo es gratis. No hay anuncios y nunca vendemos tus datos.",
+          "Solo pedimos lo que la app necesita para funcionar. Nunca necesitamos tu nombre completo ni tu dirección.",
+          "Tus herramientas (GPA, tareas, temporizador, planes) se guardan primero en tu propio dispositivo. Nadie más puede verlas.",
         ],
       },
       {
         heading: "Lo que se guarda en tu dispositivo",
         body: [
-          "Tus clases y calificaciones, tareas, planes, historial del temporizador y ajustes se guardan en el navegador de este dispositivo.",
-          "Funcionan sin internet. Si borras los datos del navegador, o usas \"Borrar todo en este dispositivo\" en Ajustes, se pierden.",
+          "Tus clases y calificaciones, tareas, planes, resultados guardados, chats con Coach, perfil y ajustes se guardan en tu navegador, en este dispositivo.",
+          "Funcionan sin internet. Si borras los datos del navegador, o usas \"Borrar todo en este dispositivo\" en Ajustes, desaparecen.",
         ],
       },
       {
-        heading: "Cuentas (muy pronto)",
+        heading: "Cuentas",
         body: [
-          "Pronto podrás iniciar sesión para tener tu progreso en tu celular, tableta y computadora.",
-          "Cuando llegue, usarás un apodo, nunca tu nombre completo. Te pediremos tu mes y año de nacimiento para que la aplicación sea apropiada para tu edad.",
-          "Los estudiantes menores de 13 años necesitarán el permiso de un padre o madre antes de crear una cuenta. Mientras tanto, pueden usar Rumbo sin cuenta, con todo guardado solo en su dispositivo.",
-          "Podrás descargar todos tus datos o borrar tu cuenta cuando quieras.",
+          "Puedes usar Rumbo sin cuenta. Si inicias sesión (con Google o un enlace por correo), tus cosas se copian a tu cuenta para que te sigan a tus otros dispositivos.",
+          "Usamos un apodo, nunca tu nombre completo. Pedimos tu mes y año de nacimiento solo para que la app sea apropiada para tu edad. Tu grado y tus intereses ayudan a Rumbo a sugerirte cosas que te queden bien.",
+          "Los estudiantes menores de 13 años no pueden crear una cuenta. Usan Rumbo como invitados y todo se queda en su dispositivo. No les pedimos correo electrónico ni información de la escuela.",
+          "Puedes descargar todos tus datos desde la página Yo en cualquier momento.",
         ],
       },
       {
-        heading: "Funciones con IA (muy pronto)",
+        heading: "Funciones de IA",
         body: [
-          "Algunas funciones usarán IA para buscar oportunidades en internet o ayudarte a estudiar. Tus preguntas se envían a nuestro proveedor de IA para obtener una respuesta. No escribas datos privados como tu número de teléfono, dirección o contraseñas.",
-          "Lee \"Cómo funciona la IA\" para conocer los detalles y los límites.",
+          "Buscar, Coach y Plan usan IA. Lo que escribes se envía a nuestro proveedor de IA para obtener una respuesta. No escribas datos privados como tu teléfono, dirección o contraseñas.",
+          "Cuando buscas, también podemos enviar tu ciudad (no tu ubicación exacta), tu grupo de edad y tus intereses para que la respuesta te quede bien.",
+          "Rumbo no guarda un perfil tuyo para anuncios. Lee \"Cómo funciona la IA\" para ver los detalles y límites.",
+        ],
+      },
+      {
+        heading: "Tu ubicación",
+        body: [
+          "Si tocas \"Usar mi ubicación\", tu navegador te pregunta primero. Rumbo solo guarda la ciudad más cercana, no tu lugar exacto. También puedes escribir una ciudad o código postal.",
         ],
       },
       {
         heading: "Preguntas",
         body: [
-          "Si algo no está claro, pídele a tu papá, mamá, maestro o consejero escolar que lo lea contigo.",
+          "Si algo aquí no está claro, pide a un padre, maestro o consejero escolar que lo lea contigo.",
         ],
       },
     ],
@@ -802,6 +810,14 @@ const es: Messages = {
           "Nunca inventa oportunidades. Si no encuentra una confirmada, te sugiere lugares a los que puedes contactar y los marca claramente como no confirmados.",
           "Te avisa sobre anuncios que piden dinero por adelantado o información privada.",
           "No ayuda con nada dañino. Para problemas serios, te dirige a un adulto de confianza o a tu consejero escolar.",
+        ],
+      },
+      {
+        heading: "Coach y Plan",
+        body: [
+          "Coach es una IA, no una persona. En el modo de tareas intenta enseñarte paso a paso en vez de solo dar respuestas. Puede equivocarse, así que confirma los datos importantes con tu maestro.",
+          "Plan crea una lista de pasos a partir de tu meta. No conoce fechas ni precios reales, así que confirma las fechas y reglas con tu consejero.",
+          "Si escribes sobre lastimarte o que alguien te lastima, la app se detiene y te dirige a un adulto de confianza, al 988 o al 911 en vez de dejar que la IA improvise.",
         ],
       },
       {

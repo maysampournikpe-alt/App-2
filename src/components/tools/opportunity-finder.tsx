@@ -303,6 +303,7 @@ export function OpportunityFinder() {
                 <FilterChip checked={filters.confirmedOnly} onChange={(v) => setFilters({ ...filters, confirmedOnly: v })} label={f.confirmedOnly} />
               </div>
             </fieldset>
+            <h2 className="sr-only">{f.resultsHeading}</h2>
             <p className="mb-3 font-bold" role="status">
               {f.resultsCount(state.results.length, shown.length)}
               {state.cached && <span className="ml-2 text-sm font-normal text-ink-soft">{f.cachedNote}</span>}
@@ -369,7 +370,7 @@ function FilterChip({ checked, onChange, label, strong }: { checked: boolean; on
     <label className="cursor-pointer">
       <input type="checkbox" className="peer sr-only" checked={checked} onChange={(e) => onChange(e.target.checked)} />
       <span
-        className={`inline-flex min-h-10 items-center rounded-full border px-4 peer-checked:border-river peer-checked:bg-river peer-checked:text-white peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 ${
+        className={`inline-flex min-h-10 items-center rounded-full border px-4 peer-checked:border-river peer-checked:bg-river peer-checked:text-on-river peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 ${
           strong ? "border-river font-bold text-river" : "border-line bg-surface"
         }`}
       >
@@ -462,7 +463,7 @@ export function OpportunityCard({ o, saved, onToggleSave }: { o: Opportunity; sa
 
       <p className="mt-2 flex flex-wrap gap-2 text-sm font-bold">
         <span
-          className={`rounded-full px-3 py-1 ${o.cost === "free" ? "bg-river text-white" : "border border-line bg-surface-2"}`}
+          className={`rounded-full px-3 py-1 ${o.cost === "free" ? "bg-river text-on-river" : "border border-line bg-surface-2"}`}
         >
           {costText}
         </span>

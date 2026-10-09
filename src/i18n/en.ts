@@ -639,6 +639,7 @@ const en = {
       course: "Courses",
       other: "Other",
     },
+    resultsHeading: "Results",
     filtersHeading: "Filters",
     freeOnly: "Free only",
     onlineOnly: "Online only",
@@ -739,30 +740,37 @@ const en = {
         body: [
           "Rumbo is free. There are no ads, and we never sell your data.",
           "We only ask for what the app needs to work. We never need your full name or home address.",
-          "Your tools (GPA, homework, timer, plans) are saved on your own device. Nobody else can see them.",
+          "Your tools (GPA, homework, timer, plans) are saved on your own device first. Nobody else can see them.",
         ],
       },
       {
         heading: "What's saved on your device",
         body: [
-          "Your classes and grades, homework, plans, timer history, and settings are stored in your browser on this device.",
+          "Your classes and grades, homework, plans, saved results, chats with Coach, profile, and settings are stored in your browser on this device.",
           "They work without internet. If you clear your browser data, or use \"Delete everything on this device\" in Settings, they're gone.",
         ],
       },
       {
-        heading: "Accounts (coming soon)",
+        heading: "Accounts",
         body: [
-          "Soon you'll be able to sign in to keep your progress on your phone, tablet, and computer.",
-          "When that arrives, you'll use a nickname, never your full name. We'll ask for your birth month and year to keep the app age appropriate.",
-          "Students under 13 will need a parent's permission before creating an account. Until then, they can use Rumbo without an account, with everything saved only on their device.",
-          "You'll be able to download all your data or delete your account at any time.",
+          "You can use Rumbo without an account. If you sign in (with Google or an email link), your things are copied to your account so they follow you to your other devices.",
+          "We use a nickname, never your full name. We ask for your birth month and year only to keep the app age appropriate. Your grade and interests help Rumbo suggest things that fit you.",
+          "Students under 13 can't make an account. They use Rumbo as a guest, and everything stays on their device. We don't ask them for an email address or school information.",
+          "You can download all your data from the Me page at any time.",
         ],
       },
       {
-        heading: "AI features (coming soon)",
+        heading: "AI features",
         body: [
-          "Some features will use AI to search the web for opportunities or help you study. Your questions are sent to our AI provider to get an answer. Don't type private details like your phone number, address, or passwords.",
-          "Read \"How the AI works\" for the details and limits.",
+          "Find, Coach, and Plan use AI. What you type is sent to our AI provider to get an answer. Don't type private details like your phone number, address, or passwords.",
+          "When you search, we may also send your city (not your exact location), your grade group, and your interests so the answer fits you.",
+          "Rumbo keeps no ads profile on you. Read \"How the AI works\" for the details and limits.",
+        ],
+      },
+      {
+        heading: "Your location",
+        body: [
+          "If you tap \"Use my location,\" your browser asks first. Rumbo keeps only the nearest city, not your exact spot. You can also type a city or ZIP code instead.",
         ],
       },
       {
@@ -798,6 +806,14 @@ const en = {
           "It never makes up listings. If it can't find a confirmed one, it suggests places you could contact and labels them clearly as not confirmed.",
           "It warns you about listings that ask for money upfront or for private information.",
           "It won't help with anything harmful. For serious problems, it points you to a trusted adult or your school counselor.",
+        ],
+      },
+      {
+        heading: "Coach and Plan",
+        body: [
+          "Coach is an AI, not a person. In homework mode it tries to teach you step by step instead of just giving answers. It can be wrong, so check important facts with your teacher.",
+          "Plan builds a list of steps from your goal. It doesn't know real deadlines or prices, so check dates and rules with your counselor.",
+          "If you write about hurting yourself or being hurt, the app stops and points you to a trusted adult, 988, or 911 instead of letting the AI improvise.",
         ],
       },
       {
