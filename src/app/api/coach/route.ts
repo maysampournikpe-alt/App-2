@@ -1,4 +1,4 @@
-import { NotConfiguredError, client } from "@/lib/ai/client";
+import { NotConfiguredError, client, errorDetail } from "@/lib/ai/client";
 import { CHAT_MODEL } from "@/lib/ai/config";
 import { coachRequestSchema, coachSystemPrompt, trimMessages } from "@/lib/coach/coach";
 import { RateLimiter } from "@/lib/finder/limits";
@@ -10,7 +10,7 @@ export const maxDuration = 60;
 const perMinute = new RateLimiter(12, 60 * 1000);
 const perDay = new RateLimiter(60, 24 * 60 * 60 * 1000);
 
-const err = (code: string, status: number) => Response.json({ status: "error", code }, { status });
+const err = (code: string, status: number, detail?: string) => Response.json({ status: "error", code, detail }, { status });
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -44,8 +44,8 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     if (error instanceof NotConfiguredError) return err("notConfigured", 503);
-    console.error("coach failed", error instanceof Error ? error.message : error);
-    return err("failed", 502);
+    console.error("coach failed", errorDetail(error));
+    return err("failed", 502, errorDetail(error));
   }
 
   const encoder = new TextEncoder();

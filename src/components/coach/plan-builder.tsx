@@ -27,6 +27,7 @@ export function PlanBuilder() {
   const [adjust, setAdjust] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<keyof typeof p.errors | null>(null);
+  const [detail, setDetail] = useState("");
   const [safety, setSafety] = useState<SafetyKind | null>(null);
   const gradeValue = grade ?? profile.grade;
 
@@ -47,13 +48,17 @@ export function PlanBuilder() {
     }
     setBusy(true);
     setError(null);
+    setDetail("");
     setSafety(null);
     try {
       const res = await fetch("/api/plan", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ language: locale, ...body }) });
-      const data = (await res.json()) as { status: string; plan?: RawPlan; kind?: SafetyKind; code?: keyof typeof p.errors };
+      const data = (await res.json()) as { status: string; plan?: RawPlan; kind?: SafetyKind; code?: keyof typeof p.errors; detail?: string };
       if (data.status === "ok" && data.plan) return data.plan;
       if (data.status === "safety" && data.kind) setSafety(data.kind);
-      else setError(data.code ?? "failed");
+      else {
+        setError(data.code ?? "failed");
+        setDetail(data.detail ?? "");
+      }
     } catch {
       setError("failed");
     } finally {
@@ -84,6 +89,7 @@ export function PlanBuilder() {
       {error && (
         <p role="alert" className="mt-3 font-bold text-danger">
           {p.errors[error]}
+          {detail && <span className="mt-1 block text-sm font-normal break-words">{detail}</span>}
         </p>
       )}
       {safety && (

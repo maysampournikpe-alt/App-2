@@ -38,7 +38,7 @@ type Filters = { freeOnly: boolean; onlineOnly: boolean; nearOnly: boolean; conf
 type State =
   | { kind: "idle" }
   | { kind: "loading" }
-  | { kind: "error"; code: keyof ReturnType<typeof useMessages>["finder"]["errors"] }
+  | { kind: "error"; code: keyof ReturnType<typeof useMessages>["finder"]["errors"]; detail?: string }
   | { kind: "safety"; safety: SafetyKind }
   | { kind: "done"; results: Opportunity[]; sources: { title: string; url: string }[]; cached: boolean };
 
@@ -141,7 +141,7 @@ export function OpportunityFinder() {
         void rememberResults(data.results, q);
       }
       else if (data.status === "safety") setState({ kind: "safety", safety: data.kind });
-      else setState({ kind: "error", code: data.code });
+      else setState({ kind: "error", code: data.code, detail: data.detail });
     } catch {
       setState({ kind: "error", code: navigator.onLine ? "failed" : "offline" });
     }
@@ -287,6 +287,7 @@ export function OpportunityFinder() {
         {state.kind === "error" && (
           <p role="alert" className="panel border-danger font-bold text-danger">
             {f.errors[state.code]}
+            {state.detail && <span className="mt-1 block text-sm font-normal break-words">{state.detail}</span>}
           </p>
         )}
 

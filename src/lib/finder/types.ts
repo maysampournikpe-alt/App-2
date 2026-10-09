@@ -114,4 +114,4 @@ export type SafetyKind = "crisis" | "abuse" | "danger";
 export type FindResponse =
   | { status: "ok"; results: Opportunity[]; sources: { title: string; url: string }[]; cached: boolean }
   | { status: "safety"; kind: SafetyKind }
-  | { status: "error"; code: "rateLimited" | "notConfigured" | "failed" | "badRequest" };
+  | { status: "error"; code: "rateLimited" | "notConfigured" | "failed" | "badRequest"; detail?: string };

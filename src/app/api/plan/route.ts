@@ -1,4 +1,4 @@
-import { NotConfiguredError, generateJson } from "@/lib/ai/client";
+import { NotConfiguredError, errorDetail, generateJson } from "@/lib/ai/client";
 import { RateLimiter } from "@/lib/finder/limits";
 import { safetyCheck } from "@/lib/finder/safety";
 import { planRequestSchema, rawPlanSchema } from "@/lib/plan";
@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     return json({ status: "ok", plan });
   } catch (error) {
     if (error instanceof NotConfiguredError) return json({ status: "error", code: "notConfigured" }, 503);
-    console.error("plan failed", error instanceof Error ? error.message : error);
-    return json({ status: "error", code: "failed" }, 502);
+    console.error("plan failed", errorDetail(error));
+    return json({ status: "error", code: "failed", detail: errorDetail(error) }, 502);
   }
 }

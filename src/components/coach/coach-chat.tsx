@@ -24,6 +24,7 @@ export function CoachChat() {
   const [busy, setBusy] = useState(false);
   const [draft, setDraft] = useState<string | null>(null); // the reply while it streams in
   const [error, setError] = useState<keyof typeof c.errors | null>(null);
+  const [detail, setDetail] = useState("");
   const [safety, setSafety] = useState<SafetyKind | null>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const messages = chat.value.messages;
@@ -40,6 +41,7 @@ export function CoachChat() {
     const next: ChatMessage[] = [...messages, { role: "user", content }];
     setText("");
     setError(null);
+    setDetail("");
     setSafety(null);
     setBusy(true);
     await chat.save({ mode: chat.value.mode, messages: next });
@@ -57,9 +59,12 @@ export function CoachChat() {
         }),
       });
       if ((res.headers.get("content-type") ?? "").includes("application/json")) {
-        const data = (await res.json()) as { status: string; kind?: SafetyKind; code?: keyof typeof c.errors };
+        const data = (await res.json()) as { status: string; kind?: SafetyKind; code?: keyof typeof c.errors; detail?: string };
         if (data.status === "safety" && data.kind) setSafety(data.kind);
-        else setError(data.code ?? "failed");
+        else {
+          setError(data.code ?? "failed");
+          setDetail(data.detail ?? "");
+        }
         return;
       }
       if (!res.body) throw new Error("no body");
@@ -126,6 +131,7 @@ export function CoachChat() {
       {error && (
         <p role="alert" className="mt-3 font-bold text-danger">
           {c.errors[error]}
+          {detail && <span className="mt-1 block text-sm font-normal break-words">{detail}</span>}
         </p>
       )}
       {safety && (

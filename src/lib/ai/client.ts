@@ -12,6 +12,13 @@ export function client(): Groq {
   return new Groq({ apiKey });
 }
 
+/** A short, key-free reason for a failed AI call, e.g. "401 Invalid API Key". Shown so problems can be fixed. */
+export function errorDetail(error: unknown): string {
+  const e = error as { status?: number; message?: string } | null;
+  const text = `${e?.status ?? ""} ${e?.message ?? String(error)}`.replace(/gsk_[A-Za-z0-9]+/g, "[key]").trim();
+  return text.slice(0, 200);
+}
+
 /** Pulls the first JSON object out of a model reply, even if it added words around it. */
 export function parseJson(raw: string): unknown {
   const start = raw.indexOf("{");

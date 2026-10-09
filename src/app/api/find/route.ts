@@ -1,5 +1,5 @@
 import { safetyCheck } from "@/lib/finder/safety";
-import { NotConfiguredError } from "@/lib/ai/client";
+import { NotConfiguredError, errorDetail } from "@/lib/ai/client";
 import { buildCards, searchWeb } from "@/lib/finder/search";
 import { CACHE_TTL_MS, TtlCache, cacheKey, perDay, perMinute } from "@/lib/finder/limits";
 import { findRequestSchema, type FindResponse } from "@/lib/finder/types";
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
     return json(payload);
   } catch (error) {
     if (error instanceof NotConfiguredError) return json({ status: "error", code: "notConfigured" }, 503);
-    console.error("find failed", error instanceof Error ? error.message : error);
-    return json({ status: "error", code: "failed" }, 502);
+    console.error("find failed", errorDetail(error));
+    return json({ status: "error", code: "failed", detail: errorDetail(error) }, 502);
   }
 }
