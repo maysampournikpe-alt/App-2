@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+/* Dark mode follows the data-theme attribute set by settings (and the pre-paint script). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+  Rumbo palette, drawn from the Rio Grande Valley:
+  river  - the deep green-teal of the resacas and the river
+  ruby   - Ruby Red grapefruit, first found in the Valley; primary actions and the brand mark
+  sun    - streaks and highlights only
+*/
+:root {
+  --bg: #f2f6f5;
+  --surface: #ffffff;
+  --surface-2: #e6eeec;
+  --ink: #13231f;
+  --ink-soft: #4a5d58;
+  --line: #cbd8d4;
+  --river: #0e5e57;
+  --on-river: #ffffff;
+  --river-soft: #d3eae6;
+  --ruby: #c62f49;
+  --on-ruby: #ffffff;
+  --ruby-soft: #fbe2e6;
+  --sun: #f2b33d;
+  --sun-soft: #fdf0d2;
+  --danger: #b42318;
+  --focus: #1f6feb;
+  --chart: #008a78; /* validated for bars on --surface */
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0c1614;
+  --surface: #13201d;
+  --surface-2: #1a2b27;
+  --ink: #e6efed;
+  --ink-soft: #a2b4af;
+  --line: #2b3f3a;
+  --river: #5ec4b5;
+  --on-river: #04201c;
+  --river-soft: #173a35;
+  --ruby: #ff7d90;
+  --on-ruby: #2a0710;
+  --ruby-soft: #3a1820;
+  --sun: #f5c35c;
+  --sun-soft: #3a2f14;
+  --danger: #ff8a80;
+  --focus: #79b8ff;
+  --chart: #1fa891;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --color-river: var(--river);
+  --color-on-river: var(--on-river);
+  --color-river-soft: var(--river-soft);
+  --color-ruby: var(--ruby);
+  --color-on-ruby: var(--on-ruby);
+  --color-ruby-soft: var(--ruby-soft);
+  --color-sun: var(--sun);
+  --color-sun-soft: var(--sun-soft);
+  --color-danger: var(--danger);
+  --color-chart: var(--chart);
+  --font-display: "Bricolage Grotesque Variable", "Atkinson Hyperlegible", system-ui, sans-serif;
+  --font-sans: "Atkinson Hyperlegible", system-ui, sans-serif;
+}
+
+html {
+  /* 1rem = 16px; large text raises everything proportionally. */
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+html[data-text="large"] {
+  font-size: 118.75%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+
+html[data-font="dyslexia"] {
+  --font-sans: "Lexend Variable", system-ui, sans-serif;
+  --font-display: "Lexend Variable", system-ui, sans-serif;
+}
+html[data-font="dyslexia"] body {
+  letter-spacing: 0.02em;
+  word-spacing: 0.08em;
+  line-height: 1.7;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+/* Hide content until the client applies the saved language, to avoid a flash of English. */
+html[data-pending] body {
+  visibility: hidden;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+html[data-motion="reduce"] *,
+html[data-motion="reduce"] *::before,
+html[data-motion="reduce"] *::after {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Number inputs: no spinners, they are fiddly on phones. */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@utility field {
+  @apply w-full rounded-xl border border-line bg-surface px-3 py-2.5 text-ink placeholder:text-ink-soft/70;
+}
+@utility label {
+  @apply mb-1 block text-[0.95rem] font-bold text-ink;
+}
+@utility help {
+  @apply mt-1 text-sm text-ink-soft;
+}
+@utility btn {
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2 font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn bg-ruby text-on-ruby hover:brightness-110;
+}
+@utility btn-secondary {
+  @apply btn border border-line bg-surface text-ink hover:bg-surface-2;
+}
+@utility btn-quiet {
+  @apply btn px-3 text-river hover:bg-river-soft;
+}
+@utility icon-btn {
+  @apply inline-flex size-11 shrink-0 items-center justify-center rounded-full text-ink-soft hover:bg-surface-2 hover:text-ink;
+}
+@utility panel {
+  @apply rounded-2xl border border-line bg-surface p-4 sm:p-5;
+}
+
+.field[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+
+/* Phone drawer slides in from the left. */
+.drawer[open] {
+  animation: drawer-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes drawer-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: none;
+  }
+}

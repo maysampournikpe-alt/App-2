@@ -1,0 +1,490 @@
+// English is the source of truth. Every other language file must match this shape
+// (TypeScript enforces it through the `Messages` type).
+
+const en = {
+  meta: {
+    languageName: "English",
+    description:
+      "Find opportunities near you, plan your goals, and study better. Free, in English and Spanish.",
+  },
+
+  shell: {
+    skipToContent: "Skip to main content",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    collapseMenu: "Collapse menu",
+    expandMenu: "Expand menu",
+    more: "More",
+    mainMenu: "Main menu",
+    quickTabs: "Quick tabs",
+    searchLabel: "Search tabs and tools",
+    searchPlaceholder: "Search, for example GPA",
+    searchNoResults: "Nothing matches that. Try a shorter word.",
+    pinned: "Pinned",
+    home: "Home",
+    languageToggle: "Cambiar a español",
+    languageShort: "ES",
+    offline: "You're offline. Your tools still work and will save on this device.",
+    privacy: "Privacy",
+    howAiWorks: "How the AI works",
+  },
+
+  groups: {
+    explore: "Explore",
+    learn: "Learn",
+    testPrep: "Test prep",
+    organize: "Organize",
+    track: "Track",
+    grow: "Grow",
+    me: "Me",
+  },
+
+  tabs: {
+    forYou: "For You",
+    find: "Find",
+    collegeCareer: "College and Career",
+    local: "Local Resources",
+    coach: "Coach",
+    study: "Study",
+    notes: "Notes and Flashcards",
+    mathScience: "Math and Science",
+    readingWriting: "Reading and Writing",
+    languages: "Languages",
+    ap: "AP Prep",
+    sat: "SAT",
+    psat: "PSAT",
+    act: "ACT",
+    tsi: "TSI",
+    plan: "Plan",
+    calendar: "Calendar",
+    homework: "Homework",
+    focus: "Focus",
+    habits: "Habits and Goals",
+    grades: "Grades",
+    achievements: "Achievements",
+    money: "Money",
+    wellbeing: "Wellbeing",
+    people: "People",
+    profile: "Profile and Progress",
+    settings: "Settings",
+  },
+
+  tabsShort: {
+    collegeCareer: "College",
+    local: "Local",
+    notes: "Notes",
+    mathScience: "Math",
+    readingWriting: "Writing",
+    habits: "Habits",
+    grades: "Grades",
+    achievements: "Achievements",
+    profile: "Me",
+  },
+
+  tabIntros: {
+    grades: "Work out your GPA and what you need on the final.",
+    focus: "Study in focused blocks and see how much you got done.",
+    homework: "Keep track of assignments and break big projects into steps.",
+    settings: "Language, look, accessibility, and your menu.",
+  },
+
+  tools: {
+    gpa: {
+      name: "GPA calculator",
+      summary: "Weighted and unweighted GPA, with a what-if mode for next semester.",
+    },
+    finalGrade: {
+      name: "Final exam calculator",
+      summary: "Find the score you need on the final to get the grade you want.",
+    },
+    pomodoro: {
+      name: "Pomodoro timer",
+      summary: "Work in focused blocks with breaks, and track your study minutes.",
+    },
+    homeworkTracker: {
+      name: "Homework tracker",
+      summary: "Assignments by class, sorted by due date.",
+    },
+    backwardPlanner: {
+      name: "Backward planner",
+      summary: "Enter a due date and get steps planned back from the deadline.",
+    },
+  },
+
+  home: {
+    greetingMorning: "Good morning",
+    greetingAfternoon: "Good afternoon",
+    greetingEvening: "Good evening",
+    lead: "Here's your day.",
+    dueSoon: "Due soon",
+    nothingDue: "Nothing due in the next 7 days.",
+    addHomework: "Add homework",
+    focusToday: "Focus today",
+    minutesShort: (n: number) => `${n} min`,
+    startTimer: "Start a focus block",
+    yourTools: "Your tools",
+    allDone: "All caught up.",
+  },
+
+  common: {
+    add: "Add",
+    remove: "Remove",
+    delete: "Delete",
+    cancel: "Cancel",
+    save: "Save",
+    edit: "Edit",
+    done: "Done",
+    reset: "Reset",
+    close: "Close",
+    optional: "optional",
+    today: "Today",
+    tomorrow: "Tomorrow",
+    yesterday: "Yesterday",
+    savedOnDevice: "Saved on this device.",
+    openTool: "Open",
+    confirmDelete: "Delete this? You can't undo it.",
+    daysLeft: (n: number) => (n === 1 ? "1 day left" : `${n} days left`),
+    daysLate: (n: number) => (n === 1 ? "1 day late" : `${n} days late`),
+    dueOn: (date: string) => `Due ${date}`,
+  },
+
+  gpa: {
+    title: "GPA calculator",
+    intro:
+      "Add your classes and grades. Your GPA updates as you type. Grades can be a number (0 to 100) or a letter (A, B+, C-).",
+    classesHeading: "My classes",
+    whatIfHeading: "What-if: next semester",
+    whatIfIntro: "Add classes you plan to take and the grades you expect. See how they would change your GPA.",
+    className: "Class name",
+    classNamePlaceholder: "for example Algebra I",
+    grade: "Grade",
+    gradePlaceholder: "92 or A-",
+    level: "Level",
+    credits: "Credits",
+    levels: {
+      regular: "Regular",
+      honors: "Honors / Pre-AP",
+      ap: "AP",
+      ib: "IB",
+      dual: "Dual credit",
+    },
+    addClass: "Add class",
+    addWhatIf: "Add planned class",
+    removeClass: (name: string) => `Remove ${name || "class"}`,
+    unweighted: "Unweighted",
+    weighted: "Weighted",
+    current: "Now",
+    withWhatIf: "With next semester",
+    noClasses: "Add a class to see your GPA.",
+    invalidGrade: "Use a number from 0 to 100 or a letter like B+.",
+    priorHeading: "Already have a GPA from past years?",
+    priorIntro: "Enter it with the number of credits it covers, and it will be included.",
+    priorUnweighted: "Past unweighted GPA",
+    priorWeighted: "Past weighted GPA",
+    priorCredits: "Credits earned",
+    settingsHeading: "Weighting rules",
+    settingsIntro:
+      "Schools weight classes differently. These are common Texas defaults. Check your school's handbook and change them if needed.",
+    bonus: (level: string) => `Extra points for ${level}`,
+    scaleNote: "Scale: A (90+) = 4, B (80–89) = 3, C (70–79) = 2, below 70 = 0.",
+    change: (delta: string) => `${delta} change`,
+  },
+
+  finalGrade: {
+    title: "Final exam calculator",
+    intro: "Find out what you need on the final to reach the grade you want.",
+    currentGrade: "Your grade right now (%)",
+    finalWeight: "How much the final counts (%)",
+    finalWeightHelp: "Check your syllabus. Finals often count 15% to 25%.",
+    target: "Grade you want",
+    custom: "Custom",
+    customTarget: "Target (%)",
+    resultNeed: (score: string) => `You need ${score}% on the final.`,
+    resultAlready: "You've got it already. Even a 0 on the final keeps this grade.",
+    resultImpossible: (score: string) =>
+      `You would need ${score}%, which is more than 100. Ask your teacher about extra credit or retakes.`,
+    allTargets: "For every grade",
+    needColumn: "You need",
+    gradeColumn: "To get",
+    alreadyShort: "Already there",
+    overShort: "Over 100%",
+    missing: "Enter your current grade and how much the final counts.",
+  },
+
+  pomodoro: {
+    title: "Pomodoro timer",
+    intro: "Focus for one block, then take a short break. After a few blocks, take a longer break.",
+    modes: { focus: "Focus", short: "Short break", long: "Long break" },
+    start: "Start",
+    pause: "Pause",
+    resume: "Resume",
+    skip: "Skip",
+    resetTimer: "Reset",
+    blockOf: (n: number, total: number) => `Block ${n} of ${total}`,
+    settingsHeading: "Timer settings",
+    focusLength: "Focus (minutes)",
+    shortLength: "Short break (minutes)",
+    longLength: "Long break (minutes)",
+    blocksBeforeLong: "Blocks before a long break",
+    sound: "Sound when time is up",
+    vibrate: "Vibrate when time is up (phones)",
+    autoStart: "Start the next block automatically",
+    todayMinutes: "Focused today",
+    weekHeading: "This week",
+    weekChartLabel: (total: number) => `Focus minutes for the last 7 days, ${total} minutes in total`,
+    minutes: (n: number) => (n === 1 ? "1 minute" : `${n} minutes`),
+    focusDone: "Focus block done. Take a break.",
+    breakDone: "Break's over. Ready for the next block?",
+    subject: "What are you studying?",
+    subjectPlaceholder: "for example Biology",
+  },
+
+  homework: {
+    title: "Homework tracker",
+    intro: "Add assignments by class. Check them off when you're done.",
+    newAssignment: "New assignment",
+    assignmentTitle: "Assignment",
+    assignmentPlaceholder: "for example Chapter 4 questions",
+    class: "Class",
+    noClass: "No class",
+    dueDate: "Due date",
+    addAssignment: "Add assignment",
+    classesHeading: "Classes",
+    newClass: "New class name",
+    addClassButton: "Add class",
+    groups: {
+      overdue: "Late",
+      today: "Due today",
+      tomorrow: "Due tomorrow",
+      week: "This week",
+      later: "Later",
+      noDate: "No due date",
+      done: "Done",
+    },
+    empty: "No assignments yet. Add your first one above.",
+    markDone: (title: string) => `Mark "${title}" as done`,
+    markNotDone: (title: string) => `Mark "${title}" as not done`,
+    deleteAssignment: (title: string) => `Delete "${title}"`,
+    deleteClass: (name: string) => `Delete class ${name}`,
+    clearDone: "Clear finished",
+    filterAll: "All classes",
+    filterLabel: "Show",
+  },
+
+  backward: {
+    title: "Backward planner",
+    intro:
+      "Tell us what's due and when. We'll plan the steps backward from the deadline so you're never cramming the night before.",
+    projectName: "Project",
+    projectPlaceholder: "for example History essay",
+    dueDate: "Due date",
+    startDate: "Start date",
+    type: "Type of project",
+    types: {
+      essay: "Essay or paper",
+      science: "Science project",
+      presentation: "Presentation",
+      test: "Studying for a test",
+      reading: "Book or reading",
+      custom: "My own steps",
+    },
+    stepsHeading: "Steps",
+    customStepsLabel: "Your steps, one per line",
+    needSteps: "Add at least one step, one per line.",
+    makePlan: "Make my plan",
+    yourPlans: "Your plans",
+    noPlans: "No plans yet. Make one above.",
+    stepDue: (date: string) => `by ${date}`,
+    tooShort: "The due date is too close for every step to get its own day. Some steps share a day.",
+    dueBeforeStart: "Pick a due date after the start date.",
+    sendToHomework: "Add steps to homework tracker",
+    sentToHomework: "Added to your homework tracker.",
+    deletePlan: (name: string) => `Delete plan ${name}`,
+    progress: (done: number, total: number) => `${done} of ${total} steps done`,
+    stepTemplates: {
+      essay: [
+        "Read the prompt and pick a topic",
+        "Research and take notes",
+        "Write a thesis and outline",
+        "Write the first draft",
+        "Revise for ideas and structure",
+        "Proofread and add citations",
+        "Final check and turn in",
+      ],
+      science: [
+        "Choose a question",
+        "Research background",
+        "Write a hypothesis and plan the procedure",
+        "Gather materials",
+        "Run the experiment and record data",
+        "Analyze data and make graphs",
+        "Write the report",
+        "Make the display board",
+        "Practice explaining it",
+      ],
+      presentation: [
+        "Pick the main message",
+        "Research and gather facts",
+        "Outline the slides",
+        "Make the slides",
+        "Practice out loud",
+        "Final run-through with a timer",
+      ],
+      test: [
+        "List every topic on the test",
+        "Make flashcards or a study sheet",
+        "Review the hardest topics",
+        "Do practice problems",
+        "Review mistakes",
+        "Light review and sleep early",
+      ],
+      reading: [
+        "Plan pages per day",
+        "Read the first quarter",
+        "Read the second quarter",
+        "Read the third quarter",
+        "Finish the book",
+        "Write notes or the response",
+      ],
+    },
+  },
+
+  settings: {
+    title: "Settings",
+    language: "Language",
+    languageHelp: "Choose the language for the whole app.",
+    appearance: "Appearance",
+    theme: "Theme",
+    themes: { system: "Match my device", light: "Light", dark: "Dark" },
+    accessibility: "Reading and accessibility",
+    largeText: "Large text",
+    largeTextHelp: "Makes all text bigger.",
+    dyslexiaFont: "Dyslexia-friendly font",
+    dyslexiaFontHelp: "Uses Lexend, a font with wider letters and spacing.",
+    reduceMotion: "Reduce motion",
+    reduceMotionHelp: "Turns off animations.",
+    lowData: "Low data mode",
+    lowDataHelp: "Uses less internet: pages load only when you open them, and pictures are kept to a minimum.",
+    menu: "Menu",
+    menuHelp: "Pin the tabs you use most. Hide the ones you don't need.",
+    pin: (tab: string) => `Pin ${tab}`,
+    unpin: (tab: string) => `Unpin ${tab}`,
+    hide: (tab: string) => `Hide ${tab}`,
+    show: (tab: string) => `Show ${tab}`,
+    hidden: "Hidden",
+    bottomBar: "Phone bottom bar",
+    bottomBarHelp: (n: number) => `Pick up to ${n} tabs for the bar at the bottom of your phone screen.`,
+    bottomBarFull: (n: number) => `You've picked ${n}. Remove one to add another.`,
+    data: "Data on this device",
+    dataHelp:
+      "You're using Rumbo without an account. Everything you enter is saved only on this device.",
+    clearData: "Delete everything on this device",
+    clearDataConfirm:
+      "This deletes all your classes, homework, plans, timer history, and settings on this device. You can't undo it. Continue?",
+    cleared: "Deleted. Rumbo is back to a fresh start.",
+  },
+
+  privacy: {
+    title: "Privacy, in plain words",
+    updated: "Last updated October 2026",
+    sections: [
+      {
+        heading: "The short version",
+        body: [
+          "Rumbo is free. There are no ads, and we never sell your data.",
+          "We only ask for what the app needs to work. We never need your full name or home address.",
+          "Your tools (GPA, homework, timer, plans) are saved on your own device. Nobody else can see them.",
+        ],
+      },
+      {
+        heading: "What's saved on your device",
+        body: [
+          "Your classes and grades, homework, plans, timer history, and settings are stored in your browser on this device.",
+          "They work without internet. If you clear your browser data, or use \"Delete everything on this device\" in Settings, they're gone.",
+        ],
+      },
+      {
+        heading: "Accounts (coming soon)",
+        body: [
+          "Soon you'll be able to sign in to keep your progress on your phone, tablet, and computer.",
+          "When that arrives, you'll use a nickname, never your full name. We'll ask for your birth month and year to keep the app age appropriate.",
+          "Students under 13 will need a parent's permission before creating an account. Until then, they can use Rumbo without an account, with everything saved only on their device.",
+          "You'll be able to download all your data or delete your account at any time.",
+        ],
+      },
+      {
+        heading: "AI features (coming soon)",
+        body: [
+          "Some features will use AI to search the web for opportunities or help you study. Your questions are sent to our AI provider to get an answer. Don't type private details like your phone number, address, or passwords.",
+          "Read \"How the AI works\" for the details and limits.",
+        ],
+      },
+      {
+        heading: "Questions",
+        body: [
+          "If something here is unclear, ask a parent, teacher, or school counselor to read it with you.",
+        ],
+      },
+    ],
+  },
+
+  transparency: {
+    title: "How the AI works",
+    sections: [
+      {
+        heading: "What it does",
+        body: [
+          "When you search for an opportunity, the AI looks at public websites (like school, city, library, college, and organization sites) and shows what it found.",
+          "Every confirmed result links to the page it came from, so you can check it yourself.",
+        ],
+      },
+      {
+        heading: "What it can't do",
+        body: [
+          "It can't log in to social media, email, or private websites, so it can miss things posted only there.",
+          "Websites can be out of date. Always confirm dates, costs, and requirements with the organizer.",
+          "It can make mistakes. If something looks wrong, trust the source page and a trusted adult over the AI.",
+        ],
+      },
+      {
+        heading: "Rules it follows",
+        body: [
+          "It never makes up listings. If it can't find a confirmed one, it suggests places you could contact and labels them clearly as not confirmed.",
+          "It warns you about listings that ask for money upfront or for private information.",
+          "It won't help with anything harmful. For serious problems, it points you to a trusted adult or your school counselor.",
+        ],
+      },
+      {
+        heading: "Your recommendations",
+        body: [
+          "Recommendations use only your interests, grade, and area inside Rumbo. They are never used for ads or shared with other students.",
+        ],
+      },
+    ],
+  },
+
+  offlinePage: {
+    title: "You're offline",
+    body: "This page isn't saved on your device yet. Your tools still work: open them from the menu.",
+    goHome: "Go to Home",
+  },
+
+  notFound: {
+    title: "Page not found",
+    body: "That page doesn't exist. Use the menu or search to find what you need.",
+  },
+};
+
+export default en;
+
+type Widen<T> = T extends (...args: infer A) => infer R
+  ? (...args: A) => R
+  : T extends string
+    ? string
+    : T extends readonly (infer U)[]
+      ? Widen<U>[]
+      : T extends object
+        ? { [K in keyof T]: Widen<T[K]> }
+        : T;
+
+export type Messages = Widen<typeof en>;
