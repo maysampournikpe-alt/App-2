@@ -21,7 +21,7 @@ See [PLAN.md](PLAN.md) for the full phased plan.
   finished steps.
 - **Profile and onboarding**: nickname, birth month and year, grade, language, interests.
   Students under 13 are guest-only (no account, no email).
-- **Accounts and sync** (Supabase): Google and email-link sign-in; everything saved on the device
+- **Accounts and sync** (Supabase): Email-link sign-in (no password); everything saved on the device
   is copied to the account and synced across devices (newest change wins).
 - **Offline tools** that save on the device: GPA calculator (weighted, unweighted, what-if), final
   exam calculator, Pomodoro timer with weekly chart, homework tracker, backward planner.
@@ -78,7 +78,7 @@ npm run cf:deploy                         # build and publish; prints your *.wor
 ```
 
 Then add `https://<your-worker>.workers.dev/auth/callback` to Supabase (Authentication → URL
-Configuration) and to the Google OAuth client. Notes: `scripts/cf-copy-sw.mjs` copies the service worker
+Configuration). Notes: `scripts/cf-copy-sw.mjs` copies the service worker
 into the static assets; `patches/` fixes the adapter for Next 16.4 (applied on `npm install`);
 `stubs/esbuild-wasm` keeps a build-only tool out of the Worker (it stays under the 3 MiB free-plan limit).
 Rate limits and the search cache are per Worker instance until they move to Supabase.

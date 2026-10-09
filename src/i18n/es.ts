@@ -468,7 +468,6 @@ const es: Messages = {
       heading: "Cuenta",
       guestBody: "Al iniciar sesión, tus cosas se guardan en tu cuenta y te siguen a otros dispositivos.",
       notReady: "El inicio de sesión todavía no está activado. Puedes seguir usando Rumbo como invitado.",
-      google: "Continuar con Google",
       emailLabel: "Correo electrónico",
       emailLink: "Enviarme un enlace de acceso",
       linkSent: "Revisa tu correo para ver el enlace de acceso.",
@@ -757,7 +756,7 @@ const es: Messages = {
       {
         heading: "Cuentas",
         body: [
-          "Puedes usar Rumbo sin cuenta. Si inicias sesión (con Google o un enlace por correo), tus cosas se copian a tu cuenta para que te sigan a tus otros dispositivos.",
+          "Puedes usar Rumbo sin cuenta. Si inicias sesión (con un enlace por correo), tus cosas se copian a tu cuenta para que te sigan a tus otros dispositivos.",
           "Usamos un apodo, nunca tu nombre completo. Pedimos tu mes y año de nacimiento solo para que la app sea apropiada para tu edad. Tu grado y tus intereses ayudan a Rumbo a sugerirte cosas que te queden bien.",
           "Los estudiantes menores de 13 años no pueden crear una cuenta. Usan Rumbo como invitados y todo se queda en su dispositivo. No les pedimos correo electrónico ni información de la escuela.",
           "Puedes descargar todos tus datos desde la página Yo en cualquier momento.",

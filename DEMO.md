@@ -6,7 +6,7 @@ Video: 1–3 minutes, public on YouTube or Vimeo. Introduce everyone on the team
 ## Before recording
 - [ ] Deploy to Vercel with `GROQ_API_KEY`, `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
 - [ ] Run `supabase/migrations/0001` and `0002` in the Supabase SQL Editor; add the Vercel URL's
-      `/auth/callback` to Supabase redirect URLs and Google OAuth.
+      `/auth/callback` to Supabase redirect URLs.
 - [ ] Do each search below once on the live site so it is warm, and note what comes back.
 - [ ] Use a clean browser profile, phone-sized window for part of the video, Spanish for one scene.
 

@@ -24,15 +24,6 @@ export function AccountSection({ locked }: { locked: boolean }) {
 
   const redirectTo = () => `${window.location.origin}/auth/callback?next=/me`;
 
-  async function google() {
-    const supabase = getSupabase();
-    if (!supabase) return;
-    setBusy(true);
-    const { error } = await supabase.auth.signInWithOAuth({ provider: "google", options: { redirectTo: redirectTo() } });
-    if (error) setMessage({ text: a.error, bad: true });
-    setBusy(false);
-  }
-
   async function emailLink(e: FormEvent) {
     e.preventDefault();
     const supabase = getSupabase();
@@ -69,9 +60,6 @@ export function AccountSection({ locked }: { locked: boolean }) {
         ) : (
           <>
             <p>{a.guestBody}</p>
-            <button type="button" className="btn-primary" onClick={google} disabled={busy}>
-              {a.google}
-            </button>
             <form onSubmit={emailLink} className="flex flex-wrap items-end gap-2">
               <div className="min-w-48 flex-1">
                 <label htmlFor="acct-email" className="label">
@@ -79,7 +67,7 @@ export function AccountSection({ locked }: { locked: boolean }) {
                 </label>
                 <input id="acct-email" type="email" className="field" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" required />
               </div>
-              <button type="submit" className="btn-secondary" disabled={busy}>
+              <button type="submit" className="btn-primary" disabled={busy}>
                 {a.emailLink}
               </button>
             </form>

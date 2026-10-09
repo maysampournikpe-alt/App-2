@@ -464,7 +464,6 @@ const en = {
       heading: "Account",
       guestBody: "Signing in will save your things to your account so they follow you to other devices.",
       notReady: "Sign-in isn't turned on yet. You can keep using Rumbo as a guest.",
-      google: "Continue with Google",
       emailLabel: "Email",
       emailLink: "Email me a sign-in link",
       linkSent: "Check your email for a sign-in link.",
@@ -753,7 +752,7 @@ const en = {
       {
         heading: "Accounts",
         body: [
-          "You can use Rumbo without an account. If you sign in (with Google or an email link), your things are copied to your account so they follow you to your other devices.",
+          "You can use Rumbo without an account. If you sign in (with an email link), your things are copied to your account so they follow you to your other devices.",
           "We use a nickname, never your full name. We ask for your birth month and year only to keep the app age appropriate. Your grade and interests help Rumbo suggest things that fit you.",
           "Students under 13 can't make an account. They use Rumbo as a guest, and everything stays on their device. We don't ask them for an email address or school information.",
           "You can download all your data from the Me page at any time.",
