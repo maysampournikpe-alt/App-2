@@ -60,7 +60,15 @@ export const groupOrder: GroupId[] = ["explore", "learn", "testPrep", "organize"
 
 export const allTabs: Tab[] = [
   { id: "forYou", group: "explore", href: "/for-you", icon: Sparkles, built: false, tools: [], keywords: [] },
-  { id: "find", group: "explore", href: "/find", icon: Search, built: false, tools: [], keywords: [] },
+  {
+    id: "find",
+    group: "explore",
+    href: "/find",
+    icon: Search,
+    built: true,
+    tools: [],
+    keywords: ["opportunities", "oportunidades", "internship", "prácticas", "scholarship", "beca", "volunteer", "voluntariado", "search", "buscar", "summer", "verano"],
+  },
   { id: "collegeCareer", group: "explore", href: "/college-career", icon: GraduationCap, built: false, tools: [], keywords: [] },
   { id: "local", group: "explore", href: "/local", icon: MapPin, built: false, tools: [], keywords: [] },
 
