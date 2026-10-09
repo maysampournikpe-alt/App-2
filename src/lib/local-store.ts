@@ -124,3 +124,29 @@ export async function exportAllData(): Promise<Record<string, unknown[]>> {
   }
   return out;
 }
+
+// ---- Sync support (used by sync.ts) ----
+
+export async function dirtyRows(): Promise<LocalRow[]> {
+  return getDb().items.where("dirty").equals(1).toArray();
+}
+
+/** Marks pushed rows clean, unless the student changed them again while the push ran. */
+export async function markClean(rows: LocalRow[]): Promise<void> {
+  const d = getDb();
+  await d.transaction("rw", d.items, async () => {
+    for (const r of rows) {
+      const current = await d.items.get([r.tool, r.id]);
+      if (current && current.updatedAt === r.updatedAt) await d.items.put({ ...current, dirty: 0 });
+    }
+  });
+}
+
+export async function getRow(tool: string, id: string): Promise<LocalRow | undefined> {
+  return getDb().items.get([tool, id]);
+}
+
+/** Stores a row that came from the account. It is clean, so it is not pushed back. */
+export async function putRemote(row: Omit<LocalRow, "dirty">): Promise<void> {
+  await getDb().items.put({ ...row, dirty: 0 });
+}

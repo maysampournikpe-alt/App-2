@@ -4,6 +4,7 @@ import { useEffect, type ReactNode } from "react";
 import { SerwistProvider } from "@serwist/turbopack/react";
 import { locales } from "@/i18n";
 import { useSettings } from "@/lib/settings";
+import { SyncRunner } from "@/components/sync-runner";
 import { startPomodoroWatcher } from "@/lib/pomodoro";
 
 function setAttr(el: HTMLElement, name: string, value: string | null) {
@@ -41,6 +42,7 @@ export function Providers({ children }: { children: ReactNode }) {
   return (
     <SerwistProvider swUrl="/serwist/sw.js" disable={process.env.NODE_ENV === "development"}>
       <ApplySettings />
+      <SyncRunner />
       {children}
     </SerwistProvider>
   );
