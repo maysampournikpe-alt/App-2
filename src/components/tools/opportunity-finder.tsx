@@ -363,7 +363,7 @@ function FilterChip({ checked, onChange, label, strong }: { checked: boolean; on
   );
 }
 
-function SafetyCard({ kind, onBack }: { kind: SafetyKind; onBack: () => void }) {
+export function SafetyCard({ kind, onBack }: { kind: SafetyKind; onBack: () => void }) {
   const f = useMessages().finder.safety;
   const s = f[kind];
   return (

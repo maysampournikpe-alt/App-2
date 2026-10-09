@@ -72,7 +72,15 @@ export const allTabs: Tab[] = [
   { id: "collegeCareer", group: "explore", href: "/college-career", icon: GraduationCap, built: false, tools: [], keywords: [] },
   { id: "local", group: "explore", href: "/local", icon: MapPin, built: false, tools: [], keywords: [] },
 
-  { id: "coach", group: "learn", href: "/coach", icon: MessageCircle, built: false, tools: [], keywords: [] },
+  {
+    id: "coach",
+    group: "learn",
+    href: "/coach",
+    icon: MessageCircle,
+    built: true,
+    tools: [],
+    keywords: ["chat", "tutor", "homework help", "ayuda con tareas", "interview", "entrevista", "quiz", "debate"],
+  },
   { id: "study", group: "learn", href: "/study", icon: BookOpen, built: false, tools: [], keywords: [] },
   { id: "notes", group: "learn", href: "/notes", icon: StickyNote, built: false, tools: [], keywords: [] },
   { id: "mathScience", group: "learn", href: "/math-science", icon: FlaskConical, built: false, tools: [], keywords: [] },
@@ -85,7 +93,15 @@ export const allTabs: Tab[] = [
   { id: "act", group: "testPrep", href: "/act", icon: ListChecks, built: false, tools: [], keywords: [] },
   { id: "tsi", group: "testPrep", href: "/tsi", icon: ScrollText, built: false, tools: [], keywords: [] },
 
-  { id: "plan", group: "organize", href: "/plan", icon: Route, built: false, tools: [], keywords: [] },
+  {
+    id: "plan",
+    group: "organize",
+    href: "/plan",
+    icon: Route,
+    built: true,
+    tools: [],
+    keywords: ["goals", "metas", "milestones", "steps", "pasos", "roadmap"],
+  },
   { id: "calendar", group: "organize", href: "/calendar", icon: CalendarDays, built: false, tools: [], keywords: [] },
   {
     id: "homework",

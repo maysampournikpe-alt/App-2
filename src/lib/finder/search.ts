@@ -1,4 +1,4 @@
-import Groq from "groq-sdk";
+import { client, parseJson } from "@/lib/ai/client";
 import { CHAT_MODEL, SEARCH_MODEL } from "@/lib/ai/config";
 import { ageRules } from "./safety";
 import { rawResponseSchema, type FindRequest, type RawCard } from "./types";
@@ -23,14 +23,6 @@ export const priorityDomains = [
   "southtexascollege.edu",
   "tsc.edu",
 ];
-
-export class NotConfiguredError extends Error {}
-
-function client(): Groq {
-  const apiKey = process.env.GROQ_API_KEY;
-  if (!apiKey) throw new NotConfiguredError("GROQ_API_KEY is not set");
-  return new Groq({ apiKey });
-}
 
 const languageName = (l: "en" | "es") => (l === "es" ? "Spanish" : "English");
 
@@ -100,13 +92,6 @@ function cardsPrompt(req: FindRequest, text: string, sources: Source[]): string 
     "PAGES:",
     list || "(no pages found)",
   ].join("\n");
-}
-
-function parseJson(raw: string): unknown {
-  const start = raw.indexOf("{");
-  const end = raw.lastIndexOf("}");
-  if (start < 0 || end <= start) throw new Error("no JSON");
-  return JSON.parse(raw.slice(start, end + 1));
 }
 
 /** Asks for cards, validates with zod, and retries once on bad output. */

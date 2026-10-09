@@ -1,5 +1,6 @@
 import { safetyCheck } from "@/lib/finder/safety";
-import { buildCards, NotConfiguredError, searchWeb } from "@/lib/finder/search";
+import { NotConfiguredError } from "@/lib/ai/client";
+import { buildCards, searchWeb } from "@/lib/finder/search";
 import { CACHE_TTL_MS, TtlCache, cacheKey, perDay, perMinute } from "@/lib/finder/limits";
 import { findRequestSchema, type FindResponse } from "@/lib/finder/types";
 import { verifyCards } from "@/lib/finder/verify";
