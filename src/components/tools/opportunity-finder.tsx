@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 import {
   AlertTriangle,
   Bookmark,
@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { useLocale, useMessages } from "@/i18n/client";
 import { stripMeta, useCollection, useLocalValue, type WithId } from "@/lib/local-store";
+import { rememberResults } from "@/lib/foryou-store";
 import { ageGroupFor } from "@/lib/profile";
 import { useProfile } from "@/lib/use-profile";
 import { lookupPlace, nearestPlace } from "@/lib/finder/geo";
@@ -135,13 +136,28 @@ export function OpportunityFinder() {
         body: JSON.stringify(body),
       });
       const data = (await res.json()) as FindResponse;
-      if (data.status === "ok") setState({ kind: "done", results: data.results, sources: data.sources, cached: data.cached });
+      if (data.status === "ok") {
+        setState({ kind: "done", results: data.results, sources: data.sources, cached: data.cached });
+        void rememberResults(data.results, q);
+      }
       else if (data.status === "safety") setState({ kind: "safety", safety: data.kind });
       else setState({ kind: "error", code: data.code });
     } catch {
       setState({ kind: "error", code: navigator.onLine ? "failed" : "offline" });
     }
   };
+
+  // A link like /find?q=free+camps (from For You) fills the box and searches once.
+  const startQuery = typeof window === "undefined" ? "" : new URLSearchParams(window.location.search).get("q");
+  useEffect(() => {
+    if (!startQuery || !stored.loaded) return;
+    void Promise.resolve().then(() => {
+      setQuery(startQuery);
+      void search(startQuery);
+    });
+    // Run once, after the remembered place has loaded.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stored.loaded]);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();

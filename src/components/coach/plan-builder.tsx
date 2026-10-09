@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Loader2, Wand2 } from "lucide-react";
 import { useLocale, useMessages } from "@/i18n/client";
 import { useLocalValue } from "@/lib/local-store";
@@ -29,6 +29,16 @@ export function PlanBuilder() {
   const [error, setError] = useState<keyof typeof p.errors | null>(null);
   const [safety, setSafety] = useState<SafetyKind | null>(null);
   const gradeValue = grade ?? profile.grade;
+
+  // A link like /plan?goal=college (from For You) pre-fills a goal idea.
+  useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get("goal");
+    if (id && (goalTemplateIds as readonly string[]).includes(id)) {
+      void Promise.resolve().then(() => setGoal(p.templateGoals[id as (typeof goalTemplateIds)[number]]));
+    }
+    // Once, on first load; the language can change the wording after.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function request(body: Record<string, unknown>): Promise<RawPlan | null> {
     if (!navigator.onLine) {

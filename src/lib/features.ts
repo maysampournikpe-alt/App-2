@@ -59,7 +59,15 @@ export type Tab = {
 export const groupOrder: GroupId[] = ["explore", "learn", "testPrep", "organize", "track", "grow", "me"];
 
 export const allTabs: Tab[] = [
-  { id: "forYou", group: "explore", href: "/for-you", icon: Sparkles, built: false, tools: [], keywords: [] },
+  {
+    id: "forYou",
+    group: "explore",
+    href: "/for-you",
+    icon: Sparkles,
+    built: true,
+    tools: [],
+    keywords: ["recommended", "recomendaciones", "ideas", "suggestions", "sugerencias"],
+  },
   {
     id: "find",
     group: "explore",
