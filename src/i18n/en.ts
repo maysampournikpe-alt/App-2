@@ -494,7 +494,7 @@ const en = {
     locationHeading: "Where are you?",
     locationLabel: "City or ZIP code",
     locationPlaceholder: "for example McAllen or 78501",
-    locationSet: (label: string) => `Searching near ${label}`,
+    locationSet: (label: string) => `Searching near ${label}.`,
     locationUnknown: "We don't have that place yet. Try a city in Texas or a ZIP code.",
     useMyLocation: "Use my location",
     locating: "Finding you…",

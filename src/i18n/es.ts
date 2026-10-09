@@ -498,7 +498,7 @@ const es: Messages = {
     locationHeading: "¿Dónde estás?",
     locationLabel: "Ciudad o código postal",
     locationPlaceholder: "por ejemplo McAllen o 78501",
-    locationSet: (label: string) => `Buscando cerca de ${label}`,
+    locationSet: (label: string) => `Buscando cerca de ${label}.`,
     locationUnknown: "Todavía no tenemos ese lugar. Prueba con una ciudad de Texas o un código postal.",
     useMyLocation: "Usar mi ubicación",
     locating: "Buscando tu ubicación…",
